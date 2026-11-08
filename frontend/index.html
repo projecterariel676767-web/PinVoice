@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#090d18">
+  <meta name="description" content="PinVoice — анализ акустики голоса и Voice DNA.">
+  <title>PinVoice — Voice Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="/"><span class="brand-mark">P</span><span>Pin<span class="brand-light">Voice</span><small>VOICE INTELLIGENCE</small></span></a>
+      <div class="nav-label">РАБОЧЕЕ ПРОСТРАНСТВО</div>
+      <a class="nav-item active" href="#studio"><span>◈</span> Студия голоса</a>
+      <a class="nav-item" href="#library"><span>▤</span> Библиотека голосов</a>
+      <div class="sidebar-bottom"><span class="status-dot"></span> Система готова <span class="version">MVP 0.1</span></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><div><span class="eyebrow">VOICE LAB / RU</span><h1>Студия голоса</h1></div><div class="top-right"><span class="lang-chip">RU <span>⌄</span></span><div class="avatar">P</div></div></header>
+      <section class="intro"><div><div class="eyebrow accent">ВАША РЕЧЬ. ВАША УНИКАЛЬНАЯ СТРУКТУРА.</div><h2>Познакомьтесь со своим<br><span>Voice DNA.</span></h2><p>Загрузите запись речи — PinVoice измерит акустические характеристики и создаст начальный профиль вашего голоса.</p></div><div class="orb-wrap"><div class="orb"><div class="orb-core"></div><i></i><i></i><i></i></div><span>ACOUSTIC<br>IDENTITY</span></div></section>
+      <section class="workspace" id="studio">
+        <div class="section-head"><div><span class="eyebrow">01 / INPUT</span><h3>Исходная запись</h3></div><span class="tag">AUDIO ANALYSIS</span></div>
+        <form id="upload-form">
+          <label class="dropzone" id="dropzone" for="audio-file"><div class="upload-icon">↑</div><strong>Перетащите аудиофайл сюда</strong><span>или <em>выберите на устройстве</em></span><small>WAV · MP3 · M4A · OGG · FLAC · до 30 МБ</small><input id="audio-file" type="file" accept="audio/*,.wav,.mp3,.m4a,.ogg,.flac,.webm" hidden></label>
+          <div class="file-row" id="file-row" hidden><div class="file-icon">♫</div><div class="file-meta"><strong id="file-name">audio.wav</strong><span id="file-size">—</span></div><button type="button" class="remove-file" id="remove-file">×</button></div>
+          <div class="field-row"><label class="field"><span>НАЗВАНИЕ ПРОФИЛЯ</span><input id="display-name" value="Мой голос" maxlength="80" placeholder="Например, Основной голос"></label><div class="field hint-field"><span>ЯЗЫК АНАЛИЗА</span><div class="fixed-value">🇷🇺 Русский <small>RU-RU</small></div></div></div>
+          <label class="consent"><input id="consent" type="checkbox"><span>Я подтверждаю, что это мой голос или у меня есть явное разрешение владельца на обработку этой записи. Я понимаю, что голосовые данные являются чувствительной информацией.</span></label>
+          <button class="primary-button" id="analyze-button" type="submit" disabled><span>Анализировать голос</span><b>↗</b></button>
+        </form>
+        <div class="notice" id="notice" role="status" hidden></div>
+      </section>
+      <section class="results" id="results" hidden>
+        <div class="section-head"><div><span class="eyebrow">02 / ANALYSIS</span><h3>Акустический профиль</h3></div><span class="tag success">ANALYSIS COMPLETE</span></div>
+        <div class="metrics" id="metrics"></div>
+        <div class="wave-card"><div class="wave-title"><strong>Форма сигнала</strong><span>AMPLITUDE / TIME</span></div><canvas id="waveform" height="110"></canvas></div>
+        <div class="dna-card"><div><span class="eyebrow">PHONEME DNA</span><h4>Фонетическая структура</h4><p id="dna-status">Профиль акустики сформирован. Фонемное выравнивание будет добавлено на следующем этапе.</p></div><span class="dna-icon">⌁</span></div>
+        <div class="transcript-card"><div class="wave-title"><strong>Распознавание речи</strong><span id="transcript-state">ОЖИДАЕТ НАСТРОЙКИ</span></div><p id="transcript-text">Модуль транскрипции отключён. Его можно включить на сервере через PINVOICE_ENABLE_WHISPER=true.</p></div>
+      </section>
+      <section class="library" id="library"><div class="section-head"><div><span class="eyebrow">03 / COLLECTION</span><h3>Библиотека голосов</h3></div><span class="count" id="voice-count">0 ПРОФИЛЕЙ</span></div><div id="voice-list" class="voice-list"><div class="empty-state">Здесь появятся ваши проанализированные голосовые профили.</div></div></section>
+      <footer><span>PINVOICE <b>© 2026</b></span><span>BUILT FOR VOICE OWNERSHIP & CONSENT</span></footer>
+    </main>
+  </div>
+  <script src="/assets/app.js" defer></script>
+</body>
+</html>
