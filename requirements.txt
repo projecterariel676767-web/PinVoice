@@ -1,0 +1,8 @@
+fastapi==0.115.12
+uvicorn[standard]==0.34.2
+python-multipart==0.0.20
+pymongo[srv]==4.12.1
+numpy==2.2.5
+soundfile==0.13.1
+scipy==1.15.2
+faster-whisper==1.1.1
