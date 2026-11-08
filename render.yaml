@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: pinvoice
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: UPLOAD_DIR
+        value: /var/data/uploads
+      - key: MAX_UPLOAD_MB
+        value: "30"
+      - key: PINVOICE_ENABLE_WHISPER
+        value: "false"
+      - key: WHISPER_MODEL
+        value: tiny
+      - key: MONGODB_URI
+        sync: false
+      - key: MONGODB_DATABASE
+        value: pinvoice
+    disk:
+      name: pinvoice-audio
+      mountPath: /var/data
+      sizeGB: 10
